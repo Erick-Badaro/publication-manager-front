@@ -24,6 +24,7 @@ header h1 {
 main {
     margin-top: 20px; 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
@@ -54,4 +55,18 @@ main {
 
 .newPost:hover {
     background: linear-gradient(135deg, #9b4df1, #b27aff);
+}
+
+#posts {
+    width: 80%;
+    max-width: 430px;
+    margin-top: 50px;
+}
+
+.post-card {
+    background: #bfd3e0;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
