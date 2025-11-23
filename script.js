@@ -27,8 +27,16 @@ function exibirPostagens(lista) {
     container.innerHTML = "";
 
     lista.forEach(post => {
+        
+        let flag = "";
+        
+        if(!post.publicado){
+          flag = `<span class="flag-nao-publicado">Não publicado</span>`;
+        }
+        
         const card = `
             <div class="post-card">
+                ${flag}
                 <h3>${post.titulo}</h3>
                 <p>Autor: ${post.autor}</p>
                 <p>Publicado em ${formatarData(post.dataPublicacao)}</p>

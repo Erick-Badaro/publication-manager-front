@@ -70,3 +70,14 @@ main {
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
+.flag-nao-publicado {
+    background: #ff6961;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+}
