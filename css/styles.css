@@ -81,3 +81,39 @@ main {
     margin-bottom: 10px;
     display: inline-block;
 }
+
+.card-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.btn-edit {
+    background-color: #6a5acd;
+    color: #fff;
+}
+
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: #7d6df0;
+}
+
+.btn-delete:hover {
+    background-color: #ff5544;
+}

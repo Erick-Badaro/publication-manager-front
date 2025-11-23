@@ -27,13 +27,13 @@ function exibirPostagens(lista) {
     container.innerHTML = "";
 
     lista.forEach(post => {
-        
+
         let flag = "";
-        
-        if(!post.publicado){
-          flag = `<span class="flag-nao-publicado">Não publicado</span>`;
+
+        if (!post.publicado) {
+            flag = `<span class="flag-nao-publicado">Não publicado</span>`;
         }
-        
+
         const card = `
             <div class="post-card">
                 ${flag}
@@ -41,6 +41,10 @@ function exibirPostagens(lista) {
                 <p>Autor: ${post.autor}</p>
                 <p>Publicado em ${formatarData(post.dataPublicacao)}</p>
                 <p>${post.conteudo}</p>
+                  <div class="card-buttons">
+                <button class="btn-edit" onclick="editarPost(${post.id})">Alterar</button>
+                <button class="btn-delete" onclick="excluirPost(${post.id})">Excluir</button>
+                </div>
             </div>
         `;
         container.innerHTML += card;
