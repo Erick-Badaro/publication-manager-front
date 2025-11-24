@@ -6,10 +6,6 @@ body {
     background-color: #f2f4f8;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 
@@ -20,6 +16,7 @@ form {
     max-width: 420px;
     border-radius: 12px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+     margin: 40px auto 130px; 
 }
 
 
@@ -72,4 +69,18 @@ button {
 
 button:hover {
     background: linear-gradient(135deg, #9b4df1, #b27aff);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: blueviolet;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
 }
