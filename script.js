@@ -219,3 +219,75 @@ function mostrarPopupSucesso(mensagem) {
     setTimeout(() => div.remove(), 1000);
   }, 2000);
 }
+
+async function editarPost(id) {
+  try {
+    const response = await fetch(`http://localhost:8080/postagem/${id}`);
+
+    if (!response.ok) {
+      throw new Error("Erro ao carregar postagem");
+    }
+
+    const postagem = await response.json();
+
+    document.querySelector("#posts").style.display = "none";
+
+    const container = document.createElement("div");
+    container.id = "editar-form-container";
+    container.innerHTML = `
+      <h2>Editar Postagem</h2>
+
+      <label>Título:</label>
+      <input id="edit-titulo" type="text" required value="${postagem.titulo}">
+
+      <label>Autor:</label>
+      <input id="edit-autor" type="text" required value="${postagem.autor}">
+
+      <label>Conteúdo:</label>
+      <textarea id="edit-conteudo" required minlength="10">${postagem.conteudo}</textarea>
+
+      <label>Data:</label>
+      <input id="edit-data" type="date" required value="${postagem.dataPublicacao}">
+
+      <button id="btn-salvar-edicao">Salvar alterações</button>
+      <button id="btn-cancelar-edicao">Cancelar</button>
+    `;
+
+    document.body.appendChild(container);
+
+    document.querySelector("#btn-salvar-edicao").onclick = async () => {
+      const dadosEditados = {
+        titulo: document.querySelector("#edit-titulo").value,
+        autor: document.querySelector("#edit-autor").value,
+        conteudo: document.querySelector("#edit-conteudo").value,
+        dataPublicacao: document.querySelector("#edit-data").value,
+      };
+
+      const responseUpdate = await fetch(
+        `http://localhost:8080/postagem/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dadosEditados),
+        }
+      );
+
+      if (!responseUpdate.ok) {
+        alert("Erro ao salvar edição!");
+        return;
+      }
+
+      mostrarPopupSucesso("Postagem atualizada com sucesso!");
+      setTimeout(() => {
+        location.reload();
+      }, 1800);
+    };
+
+    document.querySelector("#btn-cancelar-edicao").onclick = () => {
+      container.remove();
+      document.querySelector("#posts").style.display = "block";
+    };
+  } catch (erro) {
+    alert("Erro ao carregar dados da postagem");
+  }
+}
